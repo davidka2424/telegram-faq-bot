@@ -1,3 +1,27 @@
+# version: '3.8'
+
+# services:
+#   telegram-bot:
+#     build: .
+#     container_name: telegram-faq-bot
+#     restart: always
+#     volumes:
+#       - bot_data:/app/data
+#     environment:
+#       - BOT_TOKEN=${BOT_TOKEN}
+#     logging:
+#       driver: "json-file"
+#       options:
+#         max-size: "10m"
+#         max-file: "3"
+
+# volumes:
+#   bot_data:
+
+
+
+
+
 version: '3.8'
 
 services:
@@ -6,14 +30,18 @@ services:
     container_name: telegram-faq-bot
     restart: always
     volumes:
-      - bot_data:/app/data
+      - ./data:/app/data  # Монтируем папку data
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
+    command: >
+      sh -c "
+        echo '🔄 Запуск инициализации...' &&
+        python scripts/fill_sample_data.py &&
+        echo '✅ База инициализирована, запускаем бота...' &&
+        python src/bot.py
+      "
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
-
-volumes:
-  bot_data:
