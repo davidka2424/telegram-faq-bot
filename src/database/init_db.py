@@ -68,5 +68,5 @@ def main():
     
     print(f"✅ База знаний заполнена! Добавлено {len(SAMPLE_FAQ)} вопросов.")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
