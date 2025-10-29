@@ -36,7 +36,7 @@ services:
     command: >
       sh -c "
         echo '🔄 Запуск инициализации...' &&
-        python scripts/fill_sample_data.py &&
+        python scripts/fill_data.py &&
         echo '✅ База инициализирована, запускаем бота...' &&
         python src/bot.py
       "
