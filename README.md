@@ -18,12 +18,13 @@ cd telegram-faq-bot
 2. Настройка окружения
 Создайте файл .env в корне проекта:
 ```
-bash
+```bash
 cp .env.example .env
+```
 Отредактируйте .env файл, добавив ваш токен бота:
-
-ini
+```
 BOT_TOKEN=your_telegram_bot_token_here
+```
 Как получить токен:
 
 Найти @BotFather в Telegram
@@ -33,14 +34,15 @@ BOT_TOKEN=your_telegram_bot_token_here
 Следовать инструкциям и получить токен
 
 3. Запуск с Docker (рекомендуется)
-bash
+```bash
 # Сборка и запуск контейнера
 docker compose up -d
 
 # Просмотр логов
 docker compose logs -f telegram-bot
+```
 4. Запуск без Docker
-bash
+```bash
 # Установка зависимостей
 pip install -r requirements.txt
 
@@ -49,6 +51,7 @@ python scripts/fill_data.py
 
 # Запуск бота
 python src/bot.py
+```
 🏗 Структура проекта
 text
 telegram-faq-bot/
@@ -78,14 +81,15 @@ text
 /faq доставка
 🐳 Деплой на сервер
 1. Подготовка сервера
-bash
+```bash
 # Установка Docker на Ubuntu
 sudo apt update && sudo apt upgrade -y
 sudo apt install docker.io docker-compose-plugin -y
 sudo usermod -aG docker $USER
 # Переподключиться к серверу
+```
 2. Развертывание проекта
-bash
+```bash
 # Клонирование проекта
 git clone https://github.com/davidka2424/telegram-faq-bot.git
 cd telegram-faq-bot
@@ -95,15 +99,17 @@ echo "BOT_TOKEN=your_bot_token" > .env
 
 # Запуск
 docker compose up -d
+```
 3. Обновление кода
-bash
+```bash
 # На сервере
 cd telegram-faq-bot
 git pull
 docker compose down
 docker compose up -d --build
+```
 🛠 Команды управления
-bash
+```bash
 # Запуск
 docker compose up -d
 
@@ -118,6 +124,7 @@ docker compose restart
 
 # Обновление
 docker compose up -d --build
+```
 📝 Тестовые данные
 База знаний автоматически заполняется следующими вопросами:
 
@@ -135,18 +142,20 @@ docker compose up -d --build
 Добавление новых вопросов в FAQ
 Отредактируйте файл scripts/fill_data.py:
 
-python
+```python
 SAMPLE_FAQ = [
     ("Ваш вопрос?", "Ответ на вопрос"),
     # ... остальные вопросы
 ]
+```
 Локальная разработка
-bash
+```bash
 # Установка зависимостей
 pip install -r requirements.txt
 
 # Запуск в режиме разработки
 python src/bot.py
+```
 🐛 Решение проблем
 Бот не отвечает
 Проверьте токен в файле .env
