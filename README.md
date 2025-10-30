@@ -19,7 +19,7 @@ cd telegram-faq-bot
 Создайте файл .env в корне проекта:
 ```
 ```bash
-cp .env.example .env
+cp .env_example .env
 ```
 Отредактируйте .env файл, добавив ваш токен бота:
 ```
